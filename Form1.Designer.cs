@@ -28,47 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtpat = new System.Windows.Forms.TextBox();
+            this.txtmarc = new System.Windows.Forms.TextBox();
+            this.txtmod = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtprec = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtdet = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.datagrid = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.datagrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtpat
             // 
-            this.textBox1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(16, 65);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(187, 26);
-            this.textBox1.TabIndex = 0;
+            this.txtpat.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpat.Location = new System.Drawing.Point(16, 65);
+            this.txtpat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtpat.Name = "txtpat";
+            this.txtpat.Size = new System.Drawing.Size(187, 26);
+            this.txtpat.TabIndex = 0;
             // 
-            // textBox2
+            // txtmarc
             // 
-            this.textBox2.Location = new System.Drawing.Point(16, 115);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(187, 26);
-            this.textBox2.TabIndex = 1;
+            this.txtmarc.Location = new System.Drawing.Point(16, 115);
+            this.txtmarc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtmarc.Name = "txtmarc";
+            this.txtmarc.Size = new System.Drawing.Size(187, 26);
+            this.txtmarc.TabIndex = 1;
             // 
-            // textBox3
+            // txtmod
             // 
-            this.textBox3.Location = new System.Drawing.Point(16, 179);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(187, 26);
-            this.textBox3.TabIndex = 2;
+            this.txtmod.Location = new System.Drawing.Point(16, 179);
+            this.txtmod.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtmod.Name = "txtmod";
+            this.txtmod.Size = new System.Drawing.Size(187, 26);
+            this.txtmod.TabIndex = 2;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(13, 381);
+            this.dateTimePicker1.Location = new System.Drawing.Point(568, 63);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(265, 26);
@@ -107,13 +110,13 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Modelo";
             // 
-            // textBox4
+            // txtprec
             // 
-            this.textBox4.Location = new System.Drawing.Point(16, 299);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(187, 26);
-            this.textBox4.TabIndex = 7;
+            this.txtprec.Location = new System.Drawing.Point(16, 299);
+            this.txtprec.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtprec.Name = "txtprec";
+            this.txtprec.Size = new System.Drawing.Size(187, 26);
+            this.txtprec.TabIndex = 7;
             // 
             // label4
             // 
@@ -137,34 +140,55 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Detalles";
             // 
-            // textBox5
+            // txtdet
             // 
-            this.textBox5.Location = new System.Drawing.Point(13, 235);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(187, 26);
-            this.textBox5.TabIndex = 9;
+            this.txtdet.Location = new System.Drawing.Point(13, 235);
+            this.txtdet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtdet.Name = "txtdet";
+            this.txtdet.Size = new System.Drawing.Size(187, 26);
+            this.txtdet.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(16, 356);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 66);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Guardar Nuevo Auto";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // datagrid
+            // 
+            this.datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagrid.Location = new System.Drawing.Point(16, 441);
+            this.datagrid.Name = "datagrid";
+            this.datagrid.Size = new System.Drawing.Size(919, 239);
+            this.datagrid.TabIndex = 12;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 692);
+            this.Controls.Add(this.datagrid);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtdet);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtprec);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtmod);
+            this.Controls.Add(this.txtmarc);
+            this.Controls.Add(this.txtpat);
             this.Font = new System.Drawing.Font("Arial Narrow", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.datagrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,17 +196,19 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtpat;
+        private System.Windows.Forms.TextBox txtmarc;
+        private System.Windows.Forms.TextBox txtmod;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtprec;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtdet;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView datagrid;
     }
 }
 
