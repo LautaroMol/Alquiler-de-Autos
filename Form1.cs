@@ -118,6 +118,7 @@ namespace App1
                 }
 
             }
+            else MessageBox.Show("llene todos los campos");
         }
 
         private void butBusc_Click(object sender, EventArgs e)
@@ -160,7 +161,7 @@ namespace App1
 
             Auto auto = BuscarAutoPorPatente(patente);
 
-            if (auto != null)
+            if (auto != null && auto.getDisponible() == true)
             {
                 auto.Alquilar(datepickerEnt.Value, dateTimeDev.Value);
                 int est = objNegAuto.abmAutos("Modificar", auto);
@@ -169,7 +170,7 @@ namespace App1
             }
             else
             {
-                MessageBox.Show("Error al alquilar, verifique que la patente sea correcta.");
+                MessageBox.Show("Error al alquilar, verifique que la patente sea correcta y este disponible");
             }
         }
         private Auto BuscarAutoPorPatente(string patente)
@@ -245,7 +246,7 @@ namespace App1
                 }
             }
         }
-        //test
+        
         private void txtprec_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
