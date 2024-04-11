@@ -245,7 +245,7 @@ namespace App1
                 }
             }
         }
-
+        //test
         private void txtprec_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
