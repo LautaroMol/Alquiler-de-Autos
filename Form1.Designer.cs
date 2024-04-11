@@ -57,6 +57,7 @@
             this.butBorrar = new System.Windows.Forms.Button();
             this.buscdata = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnmod = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,7 +133,8 @@
             this.txtprec.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtprec.Name = "txtprec";
             this.txtprec.Size = new System.Drawing.Size(187, 26);
-            this.txtprec.TabIndex = 7;
+            this.txtprec.TabIndex = 4;
+            this.txtprec.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtprec_KeyPress);
             // 
             // label4
             // 
@@ -162,14 +164,14 @@
             this.txtdet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtdet.Name = "txtdet";
             this.txtdet.Size = new System.Drawing.Size(187, 26);
-            this.txtdet.TabIndex = 9;
+            this.txtdet.TabIndex = 3;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(16, 356);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 66);
-            this.button1.TabIndex = 11;
+            this.button1.TabIndex = 5;
             this.button1.Text = "Guardar Nuevo Auto";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -211,7 +213,7 @@
             this.ingpatente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ingpatente.Name = "ingpatente";
             this.ingpatente.Size = new System.Drawing.Size(187, 26);
-            this.ingpatente.TabIndex = 14;
+            this.ingpatente.TabIndex = 6;
             // 
             // DetallesM
             // 
@@ -305,7 +307,7 @@
             this.butBusc.Location = new System.Drawing.Point(732, 55);
             this.butBusc.Name = "butBusc";
             this.butBusc.Size = new System.Drawing.Size(84, 46);
-            this.butBusc.TabIndex = 24;
+            this.butBusc.TabIndex = 7;
             this.butBusc.Text = "Buscar";
             this.butBusc.UseVisualStyleBackColor = true;
             this.butBusc.Click += new System.EventHandler(this.butBusc_Click);
@@ -336,6 +338,7 @@
             this.buscdata.Name = "buscdata";
             this.buscdata.Size = new System.Drawing.Size(197, 26);
             this.buscdata.TabIndex = 27;
+            this.buscdata.TextChanged += new System.EventHandler(this.txtBuscarPatente_TextChanged);
             // 
             // label9
             // 
@@ -348,11 +351,22 @@
             this.label9.TabIndex = 28;
             this.label9.Text = "Buscador";
             // 
+            // btnmod
+            // 
+            this.btnmod.Location = new System.Drawing.Point(169, 356);
+            this.btnmod.Name = "btnmod";
+            this.btnmod.Size = new System.Drawing.Size(122, 48);
+            this.btnmod.TabIndex = 29;
+            this.btnmod.Text = "Modificar auto";
+            this.btnmod.UseVisualStyleBackColor = true;
+            this.btnmod.Click += new System.EventHandler(this.btnmod_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1253, 692);
+            this.Controls.Add(this.btnmod);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.buscdata);
             this.Controls.Add(this.butBorrar);
@@ -385,7 +399,7 @@
             this.Font = new System.Drawing.Font("Arial Narrow", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Alquiler de autos";
             ((System.ComponentModel.ISupportInitialize)(this.datagrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -423,6 +437,7 @@
         private System.Windows.Forms.Button butBorrar;
         private System.Windows.Forms.TextBox buscdata;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnmod;
     }
 }
 

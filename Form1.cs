@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,8 +30,9 @@ namespace App1
             datagrid.Columns.Add("Fecha De Devolucion", "Fecha De Devolucion");
             datagrid.Columns.Add("Disponible", "Disponible");
             ConfigurarDataGridView();
-
             LlenarDGV();
+
+            txtprec.KeyPress += txtprec_KeyPress;
         }
 
         private void LlenarDGV()
@@ -56,9 +58,6 @@ namespace App1
 
         private void ConfigurarDataGridView()
         {
-            // Resto del código para configurar las columnas como lo tienes actualmente
-
-            // Agregar un manejador de eventos CellFormatting a la columna "Libre"
             datagrid.CellFormatting += DataGridViewCellFormatting;
         }
 
@@ -226,25 +225,52 @@ namespace App1
         }
         private void txtBuscarPatente_TextChanged(object sender, EventArgs e)
         {
-            string patenteABuscar = buscdata.Text.Trim();
+            string patenteABuscar = buscdata.Text.Trim().ToUpper();
 
             if (!string.IsNullOrEmpty(patenteABuscar))
             {
                 foreach (DataGridViewRow row in datagrid.Rows)
                 {
-                    string patenteEnFila = row.Cells["Patente"].Value.ToString();
-
-                    if (patenteEnFila.Equals(patenteABuscar, StringComparison.OrdinalIgnoreCase))
+                    if (row.Cells["Patente"].Value != null)
                     {
-                        row.Selected = true;
+                        string patenteEnFila = row.Cells["Patente"].Value.ToString().ToUpper();
 
-                        datagrid.FirstDisplayedScrollingRowIndex = row.Index;
-
-                        break;
+                        if (patenteEnFila.IndexOf(patenteABuscar, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            row.Selected = true;
+                            datagrid.FirstDisplayedScrollingRowIndex = row.Index;
+                            break;
+                        }
                     }
                 }
             }
         }
 
+        private void txtprec_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnmod_Click(object sender, EventArgs e)
+        {
+            int result = -1;
+            if (txtpat.Text != "" && txtdet.Text != "" && txtmarc.Text != "" && txtmod.Text != "" && txtprec.Text != "")
+            {
+                Auto automod = BuscarAutoPorPatente(txtpat.Text);
+                if (automod != null)
+                {
+                    automod.Modi(txtpat.Text, txtmarc.Text, txtmod.Text, txtdet.Text, int.Parse(txtprec.Text));
+                    result = objNegAuto.abmAutos("Modificar",automod);
+                    if (result != -1) MessageBox.Show("Auto con la patente: " + txtpat.Text + " Modificado exitosamente");
+                    else MessageBox.Show("Error");
+                    LlenarDGV();
+                }
+                else MessageBox.Show("No existe un auto con la patente ingresada");
+            }
+
+        }
     }
 }
