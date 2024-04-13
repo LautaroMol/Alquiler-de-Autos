@@ -1,4 +1,5 @@
 ﻿using CapaInstituto;
+using CapaNegocio;
 using Entidades;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace App1
     public partial class Form1 : Form
     {
         NegAuto objNegAuto = new NegAuto();
-
+        NegCliente objNegCliente = new NegCliente();
         public Form1()
         {
             InitializeComponent();
@@ -88,6 +89,7 @@ namespace App1
                 DataSet ds = new DataSet();
                 ds = objNegAuto.listadoAutos("todos");
                 DataRow autoEnc = null;
+                int nGrabados = -1;
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     foreach (DataRow dr in ds.Tables[0].Rows)
@@ -105,7 +107,6 @@ namespace App1
                 }
                 else
                 {
-                    int nGrabados = -1;
                     Auto auto = new Auto(txtpat.Text, txtmarc.Text, txtmod.Text, txtdet.Text, int.Parse(txtprec.Text), DateTime.Today, DateTime.Today, true);
                     nGrabados = objNegAuto.abmAutos("Alta", auto);
                     if (nGrabados == -1)
@@ -130,6 +131,20 @@ namespace App1
             DetallesM.Text = "Detalles";
             PrecioM.Text = "Precio";
             DispM.Text = "Disponible?";
+            //llenando el combo box
+            DataSet ds1 = objNegAuto.listadoAutos("todos");
+
+            comboBox1.Items.Clear();
+            foreach (DataRow dr in ds1.Tables[0].Rows)
+            {
+                // Agregar patente al ComboBox solo si el auto está disponible
+                if ((bool)dr["Disponible"])
+                {
+                    comboBox1.Items.Add(dr["Patente"].ToString());
+                }
+
+            }
+
 
             if (ingpatente.Text != " ")
             {
@@ -161,12 +176,31 @@ namespace App1
 
             Auto auto = BuscarAutoPorPatente(patente);
 
-            if (auto != null && auto.GetDisponible() == true)
+            if (auto != null && auto.GetDisponible() == true && txtalqdni.Text != " ")
             {
-                auto.Alquilar(datepickerEnt.Value, dateTimeDev.Value);
-                int est = objNegAuto.abmAutos("Modificar", auto);
-                MessageBox.Show("¡Auto alquilado con éxito!");
-                LlenarDGV();
+                Cliente cliente = BuscarCliente(int.Parse(txtalqdni.Text));
+                
+                if (cliente != null)
+                {
+                    if (cliente.GetAlquilado() == true)
+                    {
+                        MessageBox.Show("El cliente ya tiene alquilado 1 vehiculo a su nombre");
+                    }else
+                    {
+                        auto.Alquilar(datepickerEnt.Value, dateTimeDev.Value);
+                        objNegAuto.abmAutos("Modificar", auto);
+                        cliente.reserva(auto.GetPatente());
+                        objNegCliente.abmCliente("Modificar", cliente);
+                        MessageBox.Show("¡Auto alquilado con éxito!");
+                        LlenarDGV();
+                    }
+                }
+                else  
+                {
+                    MessageBox.Show("no se encontro el cliente, por favor carguelo ");
+                    cargaCliente cargaCliente = new cargaCliente();
+                    cargaCliente.Show();
+                }               
             }
             else
             {
@@ -191,14 +225,41 @@ namespace App1
             }
         }
 
+        private Cliente BuscarCliente(int dni)
+        {
+            DataSet ds = objNegCliente.listadoCliente(dni);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                DataRow dr = ds.Tables[0].Rows[0];
+                Cliente cliente = new Cliente(Convert.ToInt32(dr["DNI"]), dr["Nombres"].ToString(), dr["Apellidos"].ToString(),
+                    Convert.ToInt32(dr["Telefono"]), dr["Patente"].ToString(), Convert.ToBoolean(dr["Alquilado"]));
+                return cliente;
+            }
+            else return null;
+        }
+
         private void butLib_Click(object sender, EventArgs e)
         {
             if (datagrid.SelectedRows.Count > 0)
             {
                 string patente = datagrid.SelectedRows[0].Cells["Patente"].Value.ToString();
                 Auto auto = BuscarAutoPorPatente(patente);
+                Cliente cliente = null;
                 if (auto != null && auto.GetDisponible() == false)
                 {
+                    DataSet ds = objNegCliente.listadoCliente(0);
+                    if (ds.Tables[0].Rows.Count> 0)
+                    {
+                        foreach(DataRow dr in ds.Tables[0].Rows)
+                        {
+                            if (dr[4].ToString() == auto.GetPatente())
+                            {
+                                cliente = new Cliente(int.Parse(dr[0].ToString()), dr[1].ToString(), dr[2].ToString(), int.Parse(dr[3].ToString()));
+                                cliente.Liberar();
+                            }
+                        }
+                    }
+                    objNegCliente.abmCliente("Modificar", cliente);
                     auto.Liberar();
                     objNegAuto.abmAutos("Modificar", auto);
                     MessageBox.Show("Auto Disponible");
@@ -272,6 +333,12 @@ namespace App1
                 else MessageBox.Show("No existe un auto con la patente ingresada");
             }
 
+        }
+
+        private void btnCli_Click(object sender, EventArgs e)
+        {
+            cargaCliente cargaCliente = new cargaCliente();
+            cargaCliente.Show();
         }
     }
 }

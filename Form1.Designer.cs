@@ -58,6 +58,10 @@
             this.buscdata = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnmod = new System.Windows.Forms.Button();
+            this.txtalqdni = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnCli = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -294,7 +298,7 @@
             // 
             // butAlquilar
             // 
-            this.butAlquilar.Location = new System.Drawing.Point(727, 389);
+            this.butAlquilar.Location = new System.Drawing.Point(757, 392);
             this.butAlquilar.Name = "butAlquilar";
             this.butAlquilar.Size = new System.Drawing.Size(84, 46);
             this.butAlquilar.TabIndex = 23;
@@ -314,7 +318,7 @@
             // 
             // butLib
             // 
-            this.butLib.Location = new System.Drawing.Point(845, 389);
+            this.butLib.Location = new System.Drawing.Point(875, 392);
             this.butLib.Name = "butLib";
             this.butLib.Size = new System.Drawing.Size(84, 46);
             this.butLib.TabIndex = 25;
@@ -324,7 +328,7 @@
             // 
             // butBorrar
             // 
-            this.butBorrar.Location = new System.Drawing.Point(963, 389);
+            this.butBorrar.Location = new System.Drawing.Point(993, 392);
             this.butBorrar.Name = "butBorrar";
             this.butBorrar.Size = new System.Drawing.Size(84, 46);
             this.butBorrar.TabIndex = 26;
@@ -361,11 +365,54 @@
             this.btnmod.UseVisualStyleBackColor = true;
             this.btnmod.Click += new System.EventHandler(this.btnmod_Click);
             // 
+            // txtalqdni
+            // 
+            this.txtalqdni.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtalqdni.Location = new System.Drawing.Point(466, 412);
+            this.txtalqdni.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtalqdni.Name = "txtalqdni";
+            this.txtalqdni.Size = new System.Drawing.Size(187, 26);
+            this.txtalqdni.TabIndex = 30;
+            this.txtalqdni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtprec_KeyPress);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial Narrow", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(670, 415);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(30, 20);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "Dni";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(638, 259);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 28);
+            this.comboBox1.TabIndex = 32;
+            // 
+            // btnCli
+            // 
+            this.btnCli.Location = new System.Drawing.Point(1118, 382);
+            this.btnCli.Name = "btnCli";
+            this.btnCli.Size = new System.Drawing.Size(84, 53);
+            this.btnCli.TabIndex = 33;
+            this.btnCli.Text = "Vista clientes";
+            this.btnCli.UseVisualStyleBackColor = true;
+            this.btnCli.Click += new System.EventHandler(this.btnCli_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1253, 692);
+            this.Controls.Add(this.btnCli);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtalqdni);
             this.Controls.Add(this.btnmod);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.buscdata);
@@ -438,6 +485,10 @@
         private System.Windows.Forms.TextBox buscdata;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnmod;
+        private System.Windows.Forms.TextBox txtalqdni;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnCli;
     }
 }
 

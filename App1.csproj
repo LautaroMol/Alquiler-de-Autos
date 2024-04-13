@@ -89,11 +89,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
+    <ProjectReference Include="CapaNegocio\CapaNegocio.csproj">
       <Project>{9d7110d8-8b32-43f4-bcf0-969abbd83ab0}</Project>
       <Name>CapaNegocio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Entidades\Entidades.csproj">
+    <ProjectReference Include="Entidades\Entidades.csproj">
       <Project>{c13e7902-48d6-46cb-aaef-8464de1759d7}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
