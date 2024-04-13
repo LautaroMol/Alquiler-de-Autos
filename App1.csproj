@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cargaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cargaCliente.Designer.cs">
+      <DependentUpon>cargaCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="cargaCliente.resx">
+      <DependentUpon>cargaCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,11 +90,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
-      <Project>{11081fe4-dc67-4195-a6fe-b68b00ad439c}</Project>
+      <Project>{9d7110d8-8b32-43f4-bcf0-969abbd83ab0}</Project>
       <Name>CapaNegocio</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
-      <Project>{1a36b001-b3d3-44c6-80dd-c4e4ecb60b29}</Project>
+      <Project>{c13e7902-48d6-46cb-aaef-8464de1759d7}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
   </ItemGroup>

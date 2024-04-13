@@ -1,4 +1,4 @@
-﻿using CapaNegocio;
+﻿using CapaInstituto;
 using Entidades;
 using System;
 using System.Collections.Generic;
@@ -161,7 +161,7 @@ namespace App1
 
             Auto auto = BuscarAutoPorPatente(patente);
 
-            if (auto != null && auto.getDisponible() == true)
+            if (auto != null && auto.GetDisponible() == true)
             {
                 auto.Alquilar(datepickerEnt.Value, dateTimeDev.Value);
                 int est = objNegAuto.abmAutos("Modificar", auto);
@@ -197,7 +197,7 @@ namespace App1
             {
                 string patente = datagrid.SelectedRows[0].Cells["Patente"].Value.ToString();
                 Auto auto = BuscarAutoPorPatente(patente);
-                if (auto != null && auto.getDisponible() == false)
+                if (auto != null && auto.GetDisponible() == false)
                 {
                     auto.Liberar();
                     objNegAuto.abmAutos("Modificar", auto);
@@ -214,7 +214,7 @@ namespace App1
             {
                 string patente = datagrid.SelectedRows[0].Cells["Patente"].Value.ToString();
                 Auto auto = BuscarAutoPorPatente(patente);
-                if (auto != null && auto.getDisponible() == true)
+                if (auto != null && auto.GetDisponible() == true)
                 {
                     objNegAuto.abmAutos("Borrar", auto);
                     MessageBox.Show("Auto Borrado");
